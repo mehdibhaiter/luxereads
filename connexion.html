@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="fr" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - LuxeReads</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --deep-space: #0a0a12;
+            --cosmic-purple: #6a00ff;
+            --neon-cyan: #00f5d4;
+            --electric-pink: #ff00aa;
+            --starlight: #e2e8ff;
+            --galaxy-edge: #1a1a2e;
+            --meteor-gold: #ffd166;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--deep-space) 0%, var(--galaxy-edge) 100%);
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            color: var(--starlight);
+            min-height: 100vh;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar Styling */
+        .cosmic-navbar {
+            background: rgba(10, 10, 18, 0.95) !important;
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border-bottom: 1px solid rgba(106, 0, 255, 0.3);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--cosmic-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--starlight), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Main Content - Centered */
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 80px 20px 20px;
+            position: relative;
+        }
+
+        .main-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(106, 0, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 245, 212, 0.1) 0%, transparent 50%);
+            animation: gradientShift 8s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        /* Login Container - Perfectly Centered */
+        .login-container {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 25px;
+            padding: 3rem;
+            width: 100%;
+            max-width: 450px;
+            transition: all 0.4s ease;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            margin: 0 auto;
+        }
+
+        .login-container:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .login-icon {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--cosmic-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .login-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff, var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.1rem;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-label {
+            color: var(--starlight);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .input-group-cosmic {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            color: var(--neon-cyan);
+            font-size: 1.1rem;
+            z-index: 3;
+        }
+
+        .form-control-cosmic {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: white;
+            padding: 1rem 1rem 1rem 3rem;
+            width: 100%;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-control-cosmic:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 0 2px rgba(0, 245, 212, 0.2);
+            outline: none;
+        }
+
+        .form-control-cosmic::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .password-toggle:hover {
+            color: var(--neon-cyan);
+        }
+
+        /* Remember Me & Forgot Password */
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .checkbox-cosmic {
+            width: 18px;
+            height: 18px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-cosmic.checked {
+            background: var(--neon-cyan);
+            border-color: var(--neon-cyan);
+        }
+
+        .checkbox-cosmic.checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--deep-space);
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .forgot-password {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .forgot-password:hover {
+            color: var(--starlight);
+            text-decoration: underline;
+        }
+
+        /* Login Button */
+        .login-btn {
+            background: linear-gradient(135deg, var(--cosmic-purple), var(--electric-pink));
+            border: none;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            width: 100%;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .login-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .login-btn:hover::before {
+            left: 100%;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(106, 0, 255, 0.4);
+        }
+
+        /* Social Login */
+        .social-divider {
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .social-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        }
+
+        .social-divider-text {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 0 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 0.8rem 1rem;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            text-decoration: none;
+        }
+
+        .social-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .social-btn.google:hover {
+            border-color: #DB4437;
+            color: #DB4437;
+        }
+
+        .social-btn.facebook:hover {
+            border-color: #4267B2;
+            color: #4267B2;
+        }
+
+        /* Register Link */
+        .register-link {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .register-link a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .register-link a:hover {
+            color: var(--starlight);
+            text-decoration: underline;
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.1;
+            animation: floatElement 6s ease-in-out infinite;
+        }
+
+        @keyframes floatElement {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .login-container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+            
+            .login-title {
+                font-size: 2rem;
+            }
+            
+            .social-buttons {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 1.5rem;
+            }
+            
+            .form-options {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            
+            .main-content {
+                padding: 80px 15px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg cosmic-navbar">
+        <div class="container">
+            <a class="navbar-brand logo-container" href="index.html">
+                <div class="logo-icon">
+                    <i class="fas fa-stars"></i>
+                </div>
+                <div class="logo-text">LuxeReads</div>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Main Content - Centered -->
+    <main class="main-content">
+        <div class="container">
+            <div class="login-container">
+                <!-- Login Header -->
+                <div class="login-header">
+                    <div class="login-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h1 class="login-title">Connexion</h1>
+                    <p class="login-subtitle">Accédez à votre compte LuxeReads</p>
+                </div>
+
+                <!-- Login Form -->
+                <form id="loginForm">
+                    <!-- Email Field -->
+                    <div class="form-group">
+                        <label class="form-label">Adresse Email</label>
+                        <div class="input-group-cosmic">
+                            <i class="fas fa-envelope input-icon"></i>
+                            <input type="email" class="form-control-cosmic" placeholder="votre@email.com" required>
+                        </div>
+                    </div>
+
+                    <!-- Password Field -->
+                    <div class="form-group">
+                        <label class="form-label">Mot de Passe</label>
+                        <div class="input-group-cosmic">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" class="form-control-cosmic" id="password" placeholder="Votre mot de passe" required>
+                            <button type="button" class="password-toggle" id="togglePassword">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Options -->
+                    <div class="form-options">
+                        <div class="remember-me" id="rememberMe">
+                            <div class="checkbox-cosmic"></div>
+                            <span>Se souvenir de moi</span>
+                        </div>
+                        <a href="mot-de-passe-oublie.html" class="forgot-password">Mot de passe oublié ?</a>
+                    </div>
+
+                    <!-- Login Button -->
+                    <button type="submit" class="login-btn">
+                        <i class="fas fa-sign-in-alt me-2"></i>
+                        Se Connecter
+                    </button>
+                </form>
+
+                <!-- Social Login -->
+                <div class="social-divider">
+                    <span class="social-divider-text">Ou connectez-vous avec</span>
+                </div>
+
+                <div class="social-buttons">
+                    <a href="#" class="social-btn google">
+                        <i class="fab fa-google"></i>
+                        Google
+                    </a>
+                    <a href="#" class="social-btn facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        Facebook
+                    </a>
+                </div>
+
+                <!-- Register Link -->
+                <div class="register-link">
+                    <p>Pas encore de compte ? <a href="inscription.html">Créer un compte</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <div class="floating-element" style="top: 10%; left: 5%;">📚</div>
+            <div class="floating-element" style="top: 20%; left: 90%;">✨</div>
+            <div class="floating-element" style="top: 50%; left: 3%;">🔒</div>
+            <div class="floating-element" style="top: 70%; left: 85%;">🌟</div>
+            <div class="floating-element" style="top: 85%; left: 10%;">💫</div>
+        </div>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Password Toggle
+            const togglePassword = document.getElementById('togglePassword');
+            const passwordInput = document.getElementById('password');
+
+            togglePassword.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                
+                // Change icon
+                const icon = this.querySelector('i');
+                if (type === 'password') {
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                } else {
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                }
+            });
+
+            // Remember Me Checkbox
+            const rememberMe = document.getElementById('rememberMe');
+            const checkbox = rememberMe.querySelector('.checkbox-cosmic');
+
+            rememberMe.addEventListener('click', function() {
+                checkbox.classList.toggle('checked');
+            });
+
+            // Form Submission
+            const loginForm = document.getElementById('loginForm');
+            const loginBtn = loginForm.querySelector('.login-btn');
+
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const email = this.querySelector('input[type="email"]').value;
+                const password = this.querySelector('input[type="password"]').value;
+                const remember = checkbox.classList.contains('checked');
+
+                // Simulate loading
+                const originalText = loginBtn.innerHTML;
+                loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Connexion...';
+                loginBtn.disabled = true;
+
+                // Simulate API call
+                setTimeout(() => {
+                    // Reset button
+                    loginBtn.innerHTML = originalText;
+                    loginBtn.disabled = false;
+
+                    // Success simulation
+                    if (email && password) {
+                        // Show success message
+                        showNotification('Connexion réussie ! Redirection...', 'success');
+                        
+                        // Redirect to dashboard
+                        setTimeout(() => {
+                            window.location.href = 'compte.html';
+                        }, 2000);
+                    } else {
+                        showNotification('Veuillez remplir tous les champs', 'error');
+                    }
+                }, 2000);
+            });
+
+            // Notification function
+            function showNotification(message, type) {
+                // Create notification element
+                const notification = document.createElement('div');
+                notification.className = `alert alert-${type === 'success' ? 'success' : 'danger'} position-fixed`;
+                notification.style.cssText = `
+                    top: 100px;
+                    right: 20px;
+                    z-index: 10000;
+                    min-width: 300px;
+                    backdrop-filter: blur(10px);
+                    background: ${type === 'success' ? 'rgba(40, 167, 69, 0.9)' : 'rgba(220, 53, 69, 0.9)'};
+                    border: 1px solid ${type === 'success' ? 'rgba(40, 167, 69, 0.5)' : 'rgba(220, 53, 69, 0.5)'};
+                    color: white;
+                `;
+                notification.innerHTML = `
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-triangle'} me-2"></i>
+                        <span>${message}</span>
+                    </div>
+                `;
+
+                // Add to body
+                document.body.appendChild(notification);
+
+                // Remove after 3 seconds
+                setTimeout(() => {
+                    notification.remove();
+                }, 3000);
+            }
+
+            // Add some interactive effects
+            const inputs = document.querySelectorAll('.form-control-cosmic');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.style.transform = 'scale(1.02)';
+                });
+
+                input.addEventListener('blur', function() {
+                    this.parentElement.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

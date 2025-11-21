@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+<html lang="fr" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MEILLEURES VENTES - LuxeReads</title>
+    <link rel="icon" href="téléchargement.jpg">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --deep-space: #0a0a12;
+            --cosmic-purple: #6a00ff;
+            --neon-cyan: #00f5d4;
+            --electric-pink: #ff00aa;
+            --starlight: #e2e8ff;
+            --galaxy-edge: #1a1a2e;
+            --meteor-gold: #ffd166;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--deep-space) 0%, var(--galaxy-edge) 100%);
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            color: var(--starlight);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Navbar Styling */
+        .cosmic-navbar {
+            background: rgba(10, 10, 18, 0.95) !important;
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border-bottom: 1px solid rgba(106, 0, 255, 0.3);
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.4s ease;
+        }
+
+        .cosmic-navbar.scrolled {
+            background: rgba(10, 10, 18, 0.98) !important;
+            padding: 0.7rem 0;
+            border-bottom-color: rgba(0, 245, 212, 0.4);
+            box-shadow: 0 10px 30px rgba(106, 0, 255, 0.2);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--cosmic-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--starlight), var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Hero Section for Nouveautés */
+        .nouveautes-hero {
+            background: linear-gradient(135deg, rgba(106, 0, 255, 0.1) 0%, rgba(0, 245, 212, 0.05) 100%);
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nouveautes-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(106, 0, 255, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 245, 212, 0.1) 0%, transparent 50%);
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.8; }
+        }
+
+        .hero-badge {
+            background: linear-gradient(135deg, var(--cosmic-purple), var(--electric-pink));
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-block;
+            margin-bottom: 2rem;
+            animation: badgePulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes badgePulse {
+            0% { transform: scale(1); box-shadow: 0 0 20px rgba(106, 0, 255, 0.5); }
+            100% { transform: scale(1.05); box-shadow: 0 0 30px rgba(106, 0, 255, 0.8); }
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, var(--neon-cyan));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        /* Advanced Filters */
+        .filters-section {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: linear-gradient(135deg, var(--cosmic-purple), var(--electric-pink));
+            color: white;
+            border-color: transparent;
+            transform: translateY(-2px);
+        }
+
+        /* Books Grid */
+        .books-grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        /* Enhanced Book Card */
+        .book-card-advanced {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 1.5rem;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-card-advanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .book-card-advanced:hover::before {
+            left: 100%;
+        }
+
+        .book-card-advanced:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .book-image-container {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+
+        .book-image-advanced {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+
+        .book-card-advanced:hover .book-image-advanced {
+            transform: scale(1.1);
+        }
+
+        .book-actions-advanced {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.3s ease;
+        }
+
+        .book-card-advanced:hover .book-actions-advanced {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .action-btn-advanced {
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--deep-space);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .action-btn-advanced:hover {
+            background: var(--neon-cyan);
+            transform: scale(1.1);
+        }
+
+        .book-badge-advanced {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: linear-gradient(135deg, var(--electric-pink), var(--cosmic-purple));
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .book-badge-advanced.new {
+            background: linear-gradient(135deg, var(--neon-cyan), var(--cosmic-purple));
+        }
+
+        .book-info-advanced {
+            text-align: center;
+        }
+
+        .book-title-advanced {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+
+        .book-author-advanced {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+
+        .book-meta-advanced {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .rating-advanced, .pages-advanced {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .rating-advanced i {
+            color: var(--meteor-gold);
+        }
+
+        .price-section-advanced {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .current-price-advanced {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--neon-cyan);
+        }
+
+        .original-price-advanced {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-decoration: line-through;
+        }
+
+        .add-to-cart-advanced {
+            background: linear-gradient(135deg, var(--cosmic-purple), var(--electric-pink));
+            border: none;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .add-to-cart-advanced::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .add-to-cart-advanced:hover::before {
+            left: 100%;
+        }
+
+        .add-to-cart-advanced:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(106, 0, 255, 0.4);
+        }
+
+        /* Floating Elements */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            font-size: 1.5rem;
+            opacity: 0.1;
+            animation: floatElement 6s ease-in-out infinite;
+        }
+
+        @keyframes floatElement {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Load More Button */
+        .load-more-section {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .load-more-btn {
+            background: transparent;
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .load-more-btn:hover {
+            background: var(--neon-cyan);
+            color: var(--deep-space);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 245, 212, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .books-grid-container {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .filter-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .book-card-advanced {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg cosmic-navbar">
+        <div class="container">
+            <a class="navbar-brand logo-container" href="index.html">
+                <div class="logo-icon">
+                    <i class="fas fa-stars"></i>
+                </div>
+                <div class="logo-text">LuxeReads</div>
+            </a>
+        </div>
+
+        
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="nouveautes-hero">
+        <div class="container text-center">
+            <div class="hero-badge">
+                <i class="fas fa-bolt me-2"></i>MEILLEURES VENTES
+            </div>
+            <h1 class="hero-title">Découvrez Nos Dernières Pépites</h1>
+            <p class="hero-subtitle">
+                Plongez dans notre collection de livres récemment ajoutés. Des œuvres rares, 
+                des éditions limitées et des best-sellers vous attendent.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Filters -->
+        <div class="filters-section">
+            <div class="filter-group">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th-large me-2"></i>Tous les Livres
+                </button>
+                <button class="filter-btn" data-filter="science-fiction">
+                    <i class="fas fa-rocket me-2"></i>Science-fiction
+                </button>
+                <button class="filter-btn" data-filter="romance">
+                    <i class="fas fa-heart me-2"></i>Romance
+                </button>
+                <button class="filter-btn" data-filter="developpement">
+                    <i class="fas fa-brain me-2"></i>Développement Personnel
+                </button>
+                <button class="filter-btn" data-filter="mystere">
+                    <i class="fas fa-search me-2"></i>Mystère
+                </button>
+            </div>
+        </div>
+
+        <!-- Books Grid -->
+        <div class="books-grid-container" id="booksGrid">
+            <!-- Les livres seront ajoutés dynamiquement par JavaScript -->
+        </div>
+
+        <!-- Load More -->
+        <div class="load-more-section">
+            <button class="load-more-btn" id="loadMore">
+                <i class="fas fa-redo me-2"></i>
+                Charger Plus de Livres
+            </button>
+        </div>
+    </div>
+
+    <!-- Floating Elements -->
+    <div class="floating-elements">
+        <div class="floating-element" style="top: 10%; left: 5%;">📚</div>
+        <div class="floating-element" style="top: 20%; left: 90%;">✨</div>
+        <div class="floating-element" style="top: 50%; left: 3%;">🌟</div>
+        <div class="floating-element" style="top: 70%; left: 85%;">💫</div>
+        <div class="floating-element" style="top: 85%; left: 10%;">🎯</div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Données des livres
+        const booksData = [
+            // Science-fiction
+            {
+                id: 1,
+                title: "Harry Potter",
+                author: "J.K. Rowling",
+                category: "science-fiction",
+                image: "Harry Potter and The Philosopher’s Stone_ _ 7 New Must-See _Harry Potter_ Covers.jpg",
+                rating: 4.8,
+                pages: 320,
+                price: 24.99,
+                originalPrice: 29.99,
+                badge: "Bestseller",
+                isNew: false
+            },
+            {
+                id: 2,
+                title: "Game of Thrones",
+                author: "George R.R. Martin",
+                category: "science-fiction",
+                image: "game of thrones.jpg",
+                rating: 4.9,
+                pages: 694,
+                price: 19.99,
+                originalPrice: null,
+                badge: null,
+                isNew: false
+            },
+            {
+                id: 3,
+                title: "The Hobbit",
+                author: "J.R.R. Tolkien",
+                category: "science-fiction",
+                image: "A Closer Look at The Hobbit Book Covers_ Design Tips and Inspiration Series - The Book Designer.jpg",
+                rating: 4.7,
+                pages: 310,
+                price: 22.99,
+                originalPrice: null,
+                badge: "Nouveau",
+                isNew: true
+            },
+            {
+                id: 4,
+                title: "Frankenstein",
+                author: "Mary Shelley",
+                category: "science-fiction",
+                image: "Frankenstein, or the Modern Prometheus by Mary Shelly.jpg",
+                rating: 4.5,
+                pages: 280,
+                price: 18.99,
+                originalPrice: 24.99,
+                badge: null,
+                isNew: false
+            },
+            // Romance
+            {
+                id: 5,
+                title: "Moi Avant Toi",
+                author: "Jojo Moyes",
+                category: "romance",
+                image: "me before you.jpg",
+                rating: 4.8,
+                pages: 480,
+                price: 21.99,
+                originalPrice: 27.99,
+                badge: "Bestseller",
+                isNew: false
+            },
+            {
+                id: 6,
+                title: "Outlander",
+                author: "Diana Gabaldon",
+                category: "romance",
+                image: "outlander.jpg",
+                rating: 4.7,
+                pages: 640,
+                price: 23.99,
+                originalPrice: null,
+                badge: null,
+                isNew: false
+            },
+            {
+                id: 7,
+                title: "Orgueil et Préjugés",
+                author: "Jane Austen",
+                category: "romance",
+                image: "pride.jpg",
+                rating: 4.9,
+                pages: 432,
+                price: 16.99,
+                originalPrice: null,
+                badge: "Classique",
+                isNew: false
+            },
+            {
+                id: 8,
+                title: "The Notebook",
+                author: "Nicholas Sparks",
+                category: "romance",
+                image: "The notebook - Nicholas Sparks.jpg",
+                rating: 4.6,
+                pages: 214,
+                price: 18.99,
+                originalPrice: 22.99,
+                badge: null,
+                isNew: false
+            },
+            // Développement Personnel
+            {
+                id: 9,
+                title: "Le Moment Présent",
+                author: "Eckhart Tolle",
+                category: "developpement",
+                image: "The Power of Now ($15) is a book written by Eckhart Tolle that came highly rated by Oprah Winfrey_ The spiritual book gives readers insight on living in the present and letting go of the past_.jpg",
+                rating: 4.8,
+                pages: 236,
+                price: 19.99,
+                originalPrice: 24.99,
+                badge: "Bestseller",
+                isNew: false
+            },
+            {
+                id: 10,
+                title: "Le Pouvoir des Habitudes",
+                author: "Charles Duhigg",
+                category: "developpement",
+                image: "12 Best Books on Stopping Procrastination.jpg",
+                rating: 4.6,
+                pages: 371,
+                price: 22.99,
+                originalPrice: null,
+                badge: null,
+                isNew: false
+            },
+            {
+                id: 11,
+                title: "La Loi de la Nature Humaine",
+                author: "Robert Greene",
+                category: "developpement",
+                image: "T.jpg",
+                rating: 4.7,
+                pages: 624,
+                price: 27.99,
+                originalPrice: null,
+                badge: "Nouveau",
+                isNew: true
+            },
+            {
+                id: 12,
+                title: "La Loi de Guerre",
+                author: "Robert Greene",
+                category: "developpement",
+                image: "téléchargement (1).jpg",
+                rating: 4.5,
+                pages: 496,
+                price: 25.99,
+                originalPrice: 31.99,
+                badge: null,
+                isNew: false
+            },
+            // Mystère
+            {
+                id: 13,
+                title: "Da Vinci Code",
+                author: "Dan Brown",
+                category: "mystere",
+                image: "The Da Vinci Code - Dan Brown.jpg",
+                rating: 4.7,
+                pages: 454,
+                price: 20.99,
+                originalPrice: 26.99,
+                badge: "Bestseller",
+                isNew: false
+            },
+            {
+                id: 14,
+                title: "Le Train",
+                author: "Émile Zola",
+                category: "mystere",
+                image: "the train.jpg",
+                rating: 4.4,
+                pages: 288,
+                price: 16.99,
+                originalPrice: null,
+                badge: null,
+                isNew: false
+            },
+            {
+                id: 15,
+                title: "Fille Disparue",
+                author: "Gillian Flynn",
+                category: "mystere",
+                image: "gone girl.jpg",
+                rating: 4.6,
+                pages: 432,
+                price: 21.99,
+                originalPrice: null,
+                badge: "Nouveau",
+                isNew: true
+            },
+            {
+                id: 16,
+                title: "Le Brillant",
+                author: "Stephen King",
+                category: "mystere",
+                image: "the shining.jpg",
+                rating: 4.8,
+                pages: 447,
+                price: 23.99,
+                originalPrice: 28.99,
+                badge: null,
+                isNew: false
+            }
+        ];
+
+        // Fonction pour générer les cartes de livres
+        function generateBookCard(book) {
+            return `
+                <div class="book-card-advanced" data-category="${book.category}">
+                    <div class="book-image-container">
+                        <img src="${book.image}" alt="${book.title}" class="book-image-advanced">
+                        <div class="book-actions-advanced">
+                            <button class="action-btn-advanced preview-btn" data-book="${book.id}">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="action-btn-advanced favorite-btn" data-book="${book.id}">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        ${book.badge ? `<div class="book-badge-advanced ${book.isNew ? 'new' : ''}">${book.badge}</div>` : ''}
+                    </div>
+                    <div class="book-info-advanced">
+                        <h4 class="book-title-advanced">${book.title}</h4>
+                        <p class="book-author-advanced">${book.author}</p>
+                        <div class="book-meta-advanced">
+                            <div class="rating-advanced">
+                                <i class="fas fa-star"></i>
+                                <span>${book.rating}</span>
+                            </div>
+                            <div class="pages-advanced">
+                                <i class="fas fa-file-alt"></i>
+                                <span>${book.pages} pages</span>
+                            </div>
+                        </div>
+                        <div class="price-section-advanced">
+                            <span class="current-price-advanced">€${book.price}</span>
+                            ${book.originalPrice ? `<span class="original-price-advanced">€${book.originalPrice}</span>` : ''}
+                        </div>
+                        <button class="add-to-cart-advanced" data-book="${book.id}">
+                            <i class="fas fa-shopping-cart"></i>
+                            Ajouter au Panier
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Fonction pour afficher les livres
+        function displayBooks(books) {
+            const grid = document.getElementById('booksGrid');
+            grid.innerHTML = books.map(book => generateBookCard(book)).join('');
+        }
+
+        // Filtrage des livres
+        function filterBooks(category) {
+            if (category === 'all') {
+                return booksData;
+            }
+            return booksData.filter(book => book.category === category);
+        }
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Afficher tous les livres au chargement
+            displayBooks(booksData);
+
+            // Gestion des filtres
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Retirer la classe active de tous les boutons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Ajouter la classe active au bouton cliqué
+                    this.classList.add('active');
+                    
+                    // Filtrer les livres
+                    const filter = this.getAttribute('data-filter');
+                    const filteredBooks = filterBooks(filter);
+                    displayBooks(filteredBooks);
+                });
+            });
+
+            // Gestion du bouton "Charger plus"
+            const loadMoreBtn = document.getElementById('loadMore');
+            loadMoreBtn.addEventListener('click', function() {
+                this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Chargement...';
+                
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-redo me-2"></i> Charger Plus de Livres';
+                    // Simuler l'ajout de nouveaux livres
+                    alert('Plus de livres chargés! En réalité, cela chargerait plus de livres depuis une API.');
+                }, 1500);
+            });
+
+            // Gestion des interactions
+            document.addEventListener('click', function(e) {
+                // Ajouter au panier
+                if (e.target.closest('.add-to-cart-advanced')) {
+                    const button = e.target.closest('.add-to-cart-advanced');
+                    const bookId = button.getAttribute('data-book');
+                    const book = booksData.find(b => b.id == bookId);
+                    
+                    // Animation
+                    const originalHTML = button.innerHTML;
+                    button.innerHTML = '<i class="fas fa-check"></i> Ajouté !';
+                    button.style.background = 'linear-gradient(135deg, #00f5d4, #00b894)';
+                    
+                    setTimeout(() => {
+                        button.innerHTML = originalHTML;
+                        button.style.background = 'linear-gradient(135deg, var(--cosmic-purple), var(--electric-pink))';
+                    }, 2000);
+                    
+                    console.log(`Livre ajouté au panier: "${book.title}"`);
+                }
+
+                // Favoris
+                if (e.target.closest('.favorite-btn')) {
+                    const button = e.target.closest('.favorite-btn');
+                    const icon = button.querySelector('i');
+                    
+                    if (icon.classList.contains('far')) {
+                        icon.classList.remove('far');
+                        icon.classList.add('fas');
+                        button.style.background = 'var(--electric-pink)';
+                        button.style.color = 'white';
+                    } else {
+                        icon.classList.remove('fas');
+                        icon.classList.add('far');
+                        button.style.background = 'rgba(255, 255, 255, 0.95)';
+                        button.style.color = 'var(--deep-space)';
+                    }
+                }
+
+                // Prévisualisation
+                if (e.target.closest('.preview-btn')) {
+                    const button = e.target.closest('.preview-btn');
+                    const bookId = button.getAttribute('data-book');
+                    const book = booksData.find(b => b.id == bookId);
+                    
+                    button.style.background = 'var(--neon-cyan)';
+                    setTimeout(() => {
+                        button.style.background = 'rgba(255, 255, 255, 0.95)';
+                    }, 300);
+                    
+                    console.log(`Prévisualisation: "${book.title}"`);
+                }
+            });
+
+            // Effet de scroll sur la navbar
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.cosmic-navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+
+    <!-- Footer Section -->
+<footer class="footer-section">
+    <!-- Main Footer -->
+    <div class="footer-main">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Company Info -->
+                <div class="footer-col company-info">
+                    <div class="footer-logo">
+                        <i class="fas fa-stars logo-icon"></i>
+                        <span class="logo-text">LuxeReads</span>
+                    </div>
+                    <p class="company-description">
+                        Votre librairie d'exception. Nous proposons des livres rares, des éditions limitées 
+                        et des œuvres littéraires soigneusement sélectionnées pour les passionnés de lecture.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Navigation Rapide</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Accueil</a></li>
+                        <li><a href="#" class="footer-link">Nouveautés</a></li>
+                        <li><a href="#" class="footer-link">Best-sellers</a></li>
+                        <li><a href="#" class="footer-link">Promotions</a></li>
+                        <li><a href="#" class="footer-link">Événements</a></li>
+                        <li><a href="#" class="footer-link">Blog</a></li>
+                    </ul>
+                </div>
+
+                <!-- Categories -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Catégories</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Romans & Fiction</a></li>
+                        <li><a href="#" class="footer-link">Science & Technologie</a></li>
+                        <li><a href="#" class="footer-link">Art & Design</a></li>
+                        <li><a href="#" class="footer-link">Business & Finance</a></li>
+                        <li><a href="#" class="footer-link">Développement Personnel</a></li>
+                        <li><a href="#" class="footer-link">Histoire & Géographie</a></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Service -->
+                <div class="footer-col">
+                    <h4 class="footer-title">Service Client</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Contactez-nous</a></li>
+                        <li><a href="#" class="footer-link">Livraison & Retours</a></li>
+                        <li><a href="#" class="footer-link">FAQ</a></li>
+                        <li><a href="#" class="footer-link">Méthodes de Paiement</a></li>
+                        <li><a href="#" class="footer-link">Guide des Tailles</a></li>
+                        <li><a href="#" class="footer-link">Suivi de Commande</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter -->
+                <div class="footer-col newsletter">
+                    <h4 class="footer-title">Newsletter</h4>
+                    <p class="newsletter-description">
+                        Abonnez-vous pour recevoir nos offres exclusives et les dernières nouveautés.
+                    </p>
+                    <form class="newsletter-form">
+                        <div class="input-group">
+                            <input type="email" class="newsletter-input" placeholder="Votre email" required>
+                            <button type="submit" class="newsletter-btn">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                    </form>
+                    <div class="payment-methods">
+                        <div class="payment-title">Paiements Sécurisés</div>
+                        <div class="payment-icons">
+                            <i class="fab fa-cc-visa"></i>
+                            <i class="fab fa-cc-mastercard"></i>
+                            <i class="fab fa-cc-paypal"></i>
+                            <i class="fab fa-cc-apple-pay"></i>
+                            <i class="fab fa-cc-amazon-pay"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="footer-bottom-content">
+                <div class="copyright">
+                    <p>&copy; 2024 LuxeReads. Tous droits réservés.</p>
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="#" class="bottom-link">Confidentialité</a>
+                    <a href="#" class="bottom-link">Conditions d'utilisation</a>
+                    <a href="#" class="bottom-link">Cookies</a>
+                    <a href="#" class="bottom-link">Mentions légales</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Floating Contact -->
+    <div class="floating-contact">
+        <div class="contact-bubble">
+            <i class="fas fa-comments"></i>
+        </div>
+        <div class="contact-tooltip">
+            Besoin d'aide ? Contactez-nous !
+        </div>
+    </div>
+</footer>
+
+<style>
+    /* Footer Base Styles */
+    .footer-section {
+        background: linear-gradient(135deg, #0a0a12 0%, #1a1a2e 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .footer-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 20% 80%, rgba(106, 0, 255, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(0, 245, 212, 0.05) 0%, transparent 50%);
+    }
+
+    /* Main Footer */
+    .footer-main {
+        padding: 5rem 0 3rem;
+        position: relative;
+        z-index: 2;
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+        gap: 3rem;
+        align-items: start;
+    }
+
+    /* Company Info */
+    .company-info {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: 2rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #ffffff, var(--neon-cyan));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .logo-icon {
+        font-size: 2.5rem;
+        background: linear-gradient(135deg, var(--neon-cyan), var(--cosmic-purple));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .company-description {
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.6;
+        font-size: 1rem;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .social-link {
+        width: 45px;
+        height: 45px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .social-link::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s ease;
+    }
+
+    .social-link:hover::before {
+        left: 100%;
+    }
+
+    .social-link:hover {
+        background: linear-gradient(135deg, var(--cosmic-purple), var(--electric-pink));
+        color: white;
+        transform: translateY(-3px);
+        border-color: transparent;
+        box-shadow: 0 10px 20px rgba(106, 0, 255, 0.3);
+    }
+
+    /* Footer Columns */
+    .footer-col {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .footer-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: white;
+        margin: 0;
+        position: relative;
+        padding-bottom: 0.8rem;
+    }
+
+    .footer-title::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 2px;
+        background: linear-gradient(90deg, var(--neon-cyan), var(--cosmic-purple));
+        border-radius: 1px;
+    }
+
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .footer-link {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+        padding-left: 1rem;
+    }
+
+    .footer-link::before {
+        content: '▸';
+        position: absolute;
+        left: 0;
+        color: var(--neon-cyan);
+        transition: transform 0.3s ease;
+    }
+
+    .footer-link:hover {
+        color: var(--neon-cyan);
+        transform: translateX(5px);
+    }
+
+    .footer-link:hover::before {
+        transform: translateX(3px);
+    }
+
+    /* Newsletter */
+    .newsletter {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 2rem;
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    .newsletter-description {
+        color: rgba(255, 255, 255, 0.7);
+        line-height: 1.5;
+        margin-bottom: 1.5rem;
+    }
+
+    .newsletter-form {
+        margin-bottom: 2rem;
+    }
+
+    .input-group {
+        position: relative;
+        display: flex;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+    }
+
+    .input-group:focus-within {
+        border-color: var(--neon-cyan);
+        box-shadow: 0 0 20px rgba(0, 245, 212, 0.2);
+    }
+
+    .newsletter-input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        padding: 1rem 1.5rem;
+        color: white;
+        font-size: 1rem;
+        outline: none;
+    }
+
+    .newsletter-input::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+    }
+
+    .newsletter-btn {
+        background: linear-gradient(135deg, var(--neon-cyan), var(--cosmic-purple));
+        border: none;
+        padding: 1rem 1.5rem;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 60px;
+    }
+
+    .newsletter-btn:hover {
+        background: linear-gradient(135deg, var(--cosmic-purple), var(--electric-pink));
+        transform: scale(1.05);
+    }
+
+    /* Payment Methods */
+    .payment-methods {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 1.5rem;
+    }
+
+    .payment-title {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+
+    .payment-icons {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        font-size: 1.8rem;
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .payment-icons i {
+        transition: all 0.3s ease;
+    }
+
+    .payment-icons i:hover {
+        color: var(--neon-cyan);
+        transform: translateY(-2px);
+    }
+
+    /* Footer Bottom */
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 2rem 0;
+        position: relative;
+        z-index: 2;
+    }
+
+    .footer-bottom-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    .copyright {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.9rem;
+    }
+
+    .footer-bottom-links {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .bottom-link {
+        color: rgba(255, 255, 255, 0.6);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+
+    .bottom-link:hover {
+        color: var(--neon-cyan);
+    }
+
+    /* Scroll to Top */
+    .scroll-to-top {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, var(--cosmic-purple), var(--electric-pink));
+        border: none;
+        border-radius: 50%;
+        color: white;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+        transition: all 0.3s ease;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 1000;
+        box-shadow: 0 5px 15px rgba(106, 0, 255, 0.3);
+    }
+
+    .scroll-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .scroll-to-top:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(106, 0, 255, 0.4);
+    }
+
+    /* Floating Contact */
+    .floating-contact {
+        position: fixed;
+        bottom: 2rem;
+        left: 2rem;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .contact-bubble {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, var(--neon-cyan), var(--cosmic-purple));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 245, 212, 0.3);
+        animation: pulse 2s infinite;
+    }
+
+    .contact-bubble:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 25px rgba(0, 245, 212, 0.4);
+    }
+
+    .contact-tooltip {
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--deep-space);
+        padding: 0.8rem 1.2rem;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        opacity: 0;
+        transform: translateX(-10px);
+        transition: all 0.3s ease;
+        pointer-events: none;
+        backdrop-filter: blur(10px);
+    }
+
+    .floating-contact:hover .contact-tooltip {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    /* Animations */
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+        .footer-content {
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 2rem;
+        }
+        
+        .footer-col:nth-child(4) {
+            grid-column: 1 / -1;
+            grid-row: 2;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .footer-main {
+            padding: 3rem 0 2rem;
+        }
+        
+        .footer-content {
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .company-info {
+            grid-column: 1 / -1;
+        }
+        
+        .newsletter {
+            grid-column: 1 / -1;
+        }
+        
+        .footer-bottom-content {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .footer-bottom-links {
+            justify-content: center;
+        }
+        
+        .floating-contact {
+            left: 1rem;
+            bottom: 1rem;
+        }
+        
+        .scroll-to-top {
+            right: 1rem;
+            bottom: 1rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .footer-content {
+            grid-template-columns: 1fr;
+        }
+        
+        .footer-bottom-links {
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .social-links {
+            justify-content: center;
+        }
+        
+        .contact-tooltip {
+            display: none;
+        }
+    }
+</style>
+
+<script>
+    // Scroll to Top functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const scrollButton = document.querySelector('.scroll-to-top');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                scrollButton.classList.add('visible');
+            } else {
+                scrollButton.classList.remove('visible');
+            }
+        });
+        
+        scrollButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Newsletter form submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('.newsletter-input').value;
+            
+            // Animation
+            const btn = this.querySelector('.newsletter-btn');
+            const originalHTML = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fas fa-check"></i>';
+            btn.style.background = 'linear-gradient(135deg, #00f5d4, #00b894)';
+            
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.style.background = 'linear-gradient(135deg, var(--neon-cyan), var(--cosmic-purple))';
+                this.reset();
+                alert('Merci pour votre inscription à notre newsletter !');
+            }, 2000);
+        });
+        
+        // Floating contact click
+        const contactBubble = document.querySelector('.contact-bubble');
+        contactBubble.addEventListener('click', function() {
+            alert('Redirection vers la page de contact...');
+            // In real implementation, this would open a contact form or chat
+        });
+    });
+</script>
+</body>
+</html>
